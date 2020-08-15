@@ -1,19 +1,20 @@
 const express = require("express");
 const cookieParser = require("cookie-parser");
 const Recaptcha = require("express-recaptcha").RecaptchaV3;
+var cors = require('cors')
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 8080;
 const app = express();
 app.use(cookieParser());
 
+app.use(cors())
 const siteKey = "6LcJG78ZAAAAAD3u-1dQGeApdBcQeMoTe9ju17SJ";
 const secretKey = "6Lc_F78ZAAAAAIGTMwU_oUDHL6kNFD5k6q2hXZvw";
 
 const recaptcha = new Recaptcha(siteKey, secretKey, { action: "homepage" });
 
 app.get("/recaptcha/", recaptcha.middleware.verify, (req, res) => {
-  const botCookie = req.cookies._rbs;
-  res.header("Access-Control-Allow-Origin", "*"); // Set this to the actual domain that will be sending the requests
+  const botCookie = req.cookies._rbs; 
   if (!req.recaptcha.error) {
     const recaptcha = req.recaptcha.data;
     const score = recaptcha.score;
