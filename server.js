@@ -6,8 +6,8 @@ const PORT = process.env.PORT;
 const app = express();
 app.use(cookieParser());
 
-const siteKey = "_reCAPTCHA_site_key";
-const secretKey = "_reCAPTCHA_secret_key";
+const siteKey = "6LcJG78ZAAAAAD3u-1dQGeApdBcQeMoTe9ju17SJ";
+const secretKey = "6Lc_F78ZAAAAAIGTMwU_oUDHL6kNFD5k6q2hXZvw";
 
 const recaptcha = new Recaptcha(siteKey, secretKey, { action: "homepage" });
 
