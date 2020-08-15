@@ -12,15 +12,15 @@ const recaptcha = new Recaptcha(siteKey, secretKey, { action: "homepage" });
 
 app.get("/recaptcha/", recaptcha.middleware.verify, (req, res) => {
   const botCookie = req.cookies._rbs;
-  res.header("Access-Control-Allow-Origin", "http://localhost:3000"); // Set this to the actual domain that will be sending the requests
+  res.header("Access-Control-Allow-Origin", "*"); // Set this to the actual domain that will be sending the requests
   res.header(
     "Access-Control-Allow-Methods",
     "GET, POST, OPTIONS, PUT, PATCH, DELETE"
   ); // If needed
   res.header(
     "Access-Control-Allow-Headers",
-    "X-Requested-With,content-type"
-  ); // If needed
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
   res.header("Access-Control-Allow-Credentials", true);
   if (!req.recaptcha.error) {
     const recaptcha = req.recaptcha.data;
