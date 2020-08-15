@@ -9,7 +9,7 @@ app.use(cookieParser());
 
 app.use(cors())
 const siteKey = "6LcJG78ZAAAAAD3u-1dQGeApdBcQeMoTe9ju17SJ";
-const secretKey = "6Lc_F78ZAAAAAIGTMwU_oUDHL6kNFD5k6q2hXZvw";
+const secretKey = "6LcJG78ZAAAAAC8thpfTyARj3rLolifOFyQ_9wnW";
 
 const recaptcha = new Recaptcha(siteKey, secretKey, { action: "homepage" });
 
