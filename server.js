@@ -10,7 +10,7 @@ const secretKey = "_reCAPTCHA_secret_key";
 
 const recaptcha = new Recaptcha(siteKey, secretKey, { action: "homepage" });
 
-app.get("/recaptcha/", recaptcha.middleware.verify, (req, res) => {
+app.use("/recaptcha/", recaptcha.middleware.verify, (req, res) => {
   const botCookie = req.cookies._rbs;
   res.header("Access-Control-Allow-Origin", "*"); // Set this to the actual domain that will be sending the requests
   res.header(
