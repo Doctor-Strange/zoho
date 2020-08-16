@@ -1,20 +1,29 @@
 const express = require("express");
 const cookieParser = require("cookie-parser");
 const Recaptcha = require("express-recaptcha").RecaptchaV3;
-var cors = require('cors')
+const bodyParser = require("body-parser");
+const cors = require("cors");
 
 const PORT = process.env.PORT || 8080;
 const app = express();
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 app.use(cookieParser());
 
-app.use(cors())
+app.use(cors());
 const siteKey = "6LcJG78ZAAAAAD3u-1dQGeApdBcQeMoTe9ju17SJ";
 const secretKey = "6LcJG78ZAAAAAC8thpfTyARj3rLolifOFyQ_9wnW";
 
 const recaptcha = new Recaptcha(siteKey, secretKey, { action: "homepage" });
 
+app.post("/verify/", (req, res) => { 
+  res.status(200).json({
+    success: true,
+  });
+});
+
 app.get("/recaptcha/", recaptcha.middleware.verify, (req, res) => {
-  const botCookie = req.cookies._rbs; 
+  const botCookie = req.cookies._rbs;
   if (!req.recaptcha.error) {
     const recaptcha = req.recaptcha.data;
     const score = recaptcha.score;
