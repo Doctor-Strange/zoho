@@ -11,8 +11,8 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 
 app.use(cors());
-const siteKey = "6LdFeb8ZAAAAAOpCpdBwshpryL2HDeBIPAGRP75J";
-const secretKey = "6LdFeb8ZAAAAAHRa0JqLVw1BXIZdfC6aTy2KrAzH";
+const siteKey = "6Lfy7r8ZAAAAAIKCAoltBxYopYVP3qE6J0rh9Aho";
+const secretKey = "6Lfy7r8ZAAAAAEOL8tZCJLjrfBRLAw9qccx3a3Sg";
 
 const recaptcha = new Recaptcha(siteKey, secretKey, { action: "homepage" });
 
