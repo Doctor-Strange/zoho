@@ -31,13 +31,13 @@ async function getUsers() {
     grant_type: "authorization_code",
     client_id: "1000.2QNXOALFG34X4YSDIAM8O74PEY950Q",
     client_secret: "2f721edc36392a77871f2f0a4c29b829aa0b551567",
-    redirect_uri: "https://sepris.com/",
+    redirect_uri: "http://sepris.com/",
     code:
-      "1000.3bc193b2906692a1036885db41b7eeb3.df5427079c1eb92e3b02133106a7fbac",
+      "1000.d8f84536f524781c7697ac992b345a07.c18a2f63517f210474522a3bad2c9431",
   };
 
   let requestDetails = {
-    method: "GET",
+    method: "POST",
     searchParams: parameters,
     throwHttpErrors: false,
   };
